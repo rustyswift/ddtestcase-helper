@@ -22,6 +22,11 @@ ddtestcase-helper /path/to/file.swift
 for file in Unit\ Tests/*.swift; do ddtestcase-helper "$file"; done
 ```
 
+You can check results on Example.swift
+```
+ddtestcase-helper Example.swift
+``` 
+
 
 ## Background
 
