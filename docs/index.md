@@ -79,7 +79,7 @@ First of all let's understand what is DI and what's not!
 
 According to wiki: https://en.wikipedia.org/wiki/Dependency_injection
 
-This means that the property wrapper with and the ServiceResolver are not actually related to DI pattern, but they are *injectors*! However, following the quote above client should not be aware of *injectors*. Since we keep **@Resolved** inside client's code, we violating the one more pattern. Moreover, if we go deeper to the property wrapper implementation we will realize that all possible dependencies are *Optionals*! Not only our *clients* aware of injectors but they're dealing with dishonest *injectors*, which can fail somewhere in the future...
+This means that the property wrapper with and the ServiceResolver are not actually related to DI pattern, but are *injectors*! However, following the quote above client should not be aware of *injectors*. Since we keep **@Resolved** inside client's code, we violating the one more pattern. Moreover, if we go deeper to the property wrapper implementation we will realize that all dependencies are *Optionals*! Not only our *clients* aware of injectors but they're dealing with optional dependecies, which will lead to crashes in production...
 
 ## Solution
 
