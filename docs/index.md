@@ -121,5 +121,3 @@ We keep the signature of our object's constructor the same, the legacy code won'
 As a result of this change some tests may and should fail. The reason is they are already wrong. Why so? Because of the shared state. Today lots of tests are *valid* if only we run them in specific order, one by one! They are not isolated and independant, that's why some tests rely on *leftovers* from preceding tests. Leftovers are mock services configured through the *Singleton* for needs of other tests. So, even if some tests will fail this is a good sign, we just have to fix them to use their own configurations, rather than random one from unknown precondition.
 
 Finally, if we'll extrapolate this practice to the entire Dx iOS project, we can call our tests unit-tests, we can rely on their result, we can run them in parallel and reduce pipelines build time.
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
