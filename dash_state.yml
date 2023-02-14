@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: Dx On-a-dash state
+  description: Dx app on-a-dash state API.
+  version: 1.0.0
+  contact:
+    email: dx-handoffs@doordash.com
+servers:
+  - url: https://api-dasher.doordash.com
+    description: Production server
+  - url: https://api-dasher.doorcrawl.com
+    description: Staging server
+paths:
+  /v1/dash/{dashId}/current_state:
+    parameters:
+      - name: dashId
+        in: path
+        required: true
+        description: the uuid of the dash
+        schema:
+          type: string
+    get:
+      description: Returns current dash state
+      responses:
+        '200':
+          description: Successfully checked if this delivery can be dropped off.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashStateResponse'
+        400:
+          description: Invalid request
+        404:
+          description: Dash not found
+components:
+  schemas:
+    DashStateResponse:
+      type: object
+      required:
+        - state
+        - data
+      properties:
+        state:
+          $ref: '#/components/schemas/DashState'
+        data:
+          description: The state data.
+          type: object
+    DashState:
+      type: string
+      enum:
+        - looking_for_orders
+        - paused
+        - acceptModal
+        - goToStore
+        - atStore
+        - shopping
+        - waitOutSide
+        - goToConsumer
+        - atConsumer
+        - delivered
